@@ -1,10 +1,11 @@
 package com.example;
 
 import java.time.LocalDate;
+import java.util.Objects;
 
 public class Employee {
 
-    private String name;
+    private String name = "";
     private double salary;
     private LocalDate hireDay;
 
@@ -56,4 +57,23 @@ public class Employee {
                 '}';
     }
 
+    @Override
+    public final boolean equals(Object obj) {
+        if (this == obj) return true;
+        if (obj == null) return false;
+        if (this.getClass() != obj.getClass()) return false;
+
+        Employee otherObj = (Employee) obj;
+        return Objects.equals(this.name, otherObj.name)
+                && this.salary == otherObj.salary
+                && Objects.equals(this.hireDay, otherObj.hireDay);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name, salary, hireDay);
+        /*return 7 * Objects.hashCode(name)
+                + 11 * Double.hashCode(salary)
+                + 9 * Objects.hashCode(hireDay);*/
+    }
 }
