@@ -1,11 +1,14 @@
 package com.example;
 
+import com.example.enums.Size;
 import org.junit.Test;
 
 import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Objects;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class JustTest {
 
@@ -63,6 +66,11 @@ public class JustTest {
         String a = "a";
         Class<? extends String> clazz = a.getClass();
         System.out.println(clazz.getName()); // "java.lang.String"
+    }
 
+    @Test
+    public void testGlobalLogger() {
+        Logger.getGlobal().info("hello there");
+        Logger.getGlobal().setLevel(Level.OFF);
     }
 }
